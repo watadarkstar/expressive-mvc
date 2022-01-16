@@ -101,22 +101,54 @@ describe("using", () => {
   it("will apply values per-render", async () => {
     let instance!: Test;
 
-    const TestComponent = (props: any) => {
+    const Component = (props: any) => {
       ({ get: instance } = Test.using(props));
       return null;
     }
 
-    const rendered = render(<TestComponent />);
+    const rendered = render(<Component />);
 
     expect(instance).toBeInstanceOf(Test);
 
-    const update = instance.update();
+    rendered.update(<Component foo="foo" bar="bar" />);
 
-    rendered.update(<TestComponent foo="foo" bar="bar" />);
+    const update = await instance.update();
 
-    expect(await update).toEqual(
+    expect(update).toEqual(
       expect.arrayContaining(["foo", "bar"])
     );
+  })
+
+  it.skip("will not render twice for new props", async () => {
+    const didRender = jest.fn();
+    let instance!: Test;
+    let update: false | readonly string[];
+
+    const Component = (props: any) => {
+      ({ get: instance } = Test.using(props));
+      didRender();
+      return null;
+    }
+
+    const rendered = render(<Component />);
+
+    expect(instance).toBeInstanceOf(Test);
+
+    rendered.update(<Component foo="foo" bar="bar" />);
+    update = await instance.update();
+
+    expect(didRender).toBeCalledTimes(2);
+    expect(update).toEqual(
+      expect.arrayContaining(["foo", "bar"])
+    );
+
+    rendered.update(<Component foo="bar" bar="foo" />);
+    update = await instance.update();
+
+    expect(didRender).toBeCalledTimes(3);
+
+    await instance.update(false);
+    expect(didRender).toBeCalledTimes(3);
   })
 })
 

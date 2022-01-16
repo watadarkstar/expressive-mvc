@@ -13,7 +13,8 @@ export class Subscriber {
   public handle = {} as BunchOf<Callback | true>;
   public dependant = new Set<Listener>();
   public parent: Controller;
-  public notify?: RequestCallback;
+  public latest?: readonly string[];
+  public freeze?: boolean;
 
   constructor(
     parent: Controller | Stateful,
@@ -28,11 +29,16 @@ export class Subscriber {
 
     define(this.proxy, LOCAL, this);
     defineProperty(this.proxy, UPDATE, {
-      get: () => (
-        this.parent.handled.filter(k => (
-          k in this.handle
-        ))
-      )
+      get: () => {
+        if(!this.latest)
+          return [];
+
+        const keys = this.latest
+          .filter(k => k in this.handle);
+
+        this.latest = undefined;
+        return keys;
+      }
     })
 
     for(const key in parent.state)
@@ -50,8 +56,22 @@ export class Subscriber {
 
     const notify = this.onUpdate(key, from);
 
-    if(notify)
+    from.waiting.add(this.notify);
+
+    if(this.freeze){
+      debugger
+      return;
+    }
+
+    if(notify){
       from.waiting.add(notify);
+    }
+  }
+
+  public notify = (keys: readonly string[]) => {
+    debugger
+    this.latest = keys;
+    this.freeze = false;
   }
 
   public spy(key: string){
@@ -77,6 +97,11 @@ export class Subscriber {
 
   public follow(key: string, callback?: Callback){
     this.handle[key] = callback || true;
+  }
+
+  public skip(){
+    if(this.parent.pending)
+      this.freeze = true;
   }
 
   public commit(){

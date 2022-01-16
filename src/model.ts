@@ -151,9 +151,15 @@ export class Model {
     from: BunchOf<any>,
     subset?: Set<string> | string[] | Query){
 
-    for(const key of keys(manage(this), subset))
+    const control = manage(this);
+    const sub = this[LOCAL];
+
+    for(const key of keys(control, subset))
       if(key in from)
         (this as any)[key] = from[key];
+
+    if(sub)
+      sub.skip();
   }
 
   export(subset?: Set<string> | string[] | Query){

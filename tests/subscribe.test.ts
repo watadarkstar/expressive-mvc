@@ -69,4 +69,23 @@ describe("subscriber", () => {
     expect(state.value).toBe("bar");
     expect(state.didSet).toBeCalledWith("bar");
   })
+
+  it.skip("will not trigger twice from import", async () => {
+    const state = Subject.create();
+    const invoke = jest.fn();
+
+    state.effect(it => {
+      it.import({ value: 2 });
+      invoke(it.value);
+    })
+
+    expect(invoke).toBeCalledWith(2);
+
+    state.value = 3;
+    const d = await state.update();
+
+    void d;
+
+    expect(invoke).toBeCalledTimes(2);
+  })
 })
