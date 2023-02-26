@@ -1,8 +1,8 @@
 import React, { Suspense } from 'react';
 
-import { mockAsync, render } from '../helper/testing';
-import { get } from '../instruction/get';
-import { Model } from '../model';
+import { mockAsync, render } from './helper/testing';
+import { get } from './instruction/get';
+import { Model } from '@expressive/mvc';
 import { Consumer } from './consumer';
 import { Global } from './global';
 import { MVC } from './mvc';

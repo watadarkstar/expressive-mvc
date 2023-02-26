@@ -1,7 +1,7 @@
 import { act } from '@testing-library/react-hooks';
 
-import { mockAsync, mockSuspense, renderHook } from '../helper/testing';
-import { Model } from '../model';
+import { mockAsync, mockSuspense, renderHook } from './helper/testing';
+import { Model } from '@expressive/mvc';
 import { useCompute } from './useCompute';
 
 const opts = { timeout: 100 };

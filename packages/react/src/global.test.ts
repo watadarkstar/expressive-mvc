@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import { Global } from '..';
+import { Global } from './global';
 import { Oops } from './mvc';
 
 describe("init", () => {

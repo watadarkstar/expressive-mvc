@@ -1,9 +1,9 @@
+import { Model } from '@expressive/mvc';
 import React from 'react';
 
-import { issues } from '../helper/issues';
-import { Callback, Class, InstanceOf, NonOptionalValues, NoVoid, OptionalValues } from '../helper/types';
-import { Model } from '../model';
 import { useContext } from './context';
+import { issues } from './helper/issues';
+import { Callback, Class, InstanceOf, NonOptionalValues, NoVoid, OptionalValues } from './helper/types';
 import { useCompute } from './useCompute';
 import { useNew } from './useNew';
 import { useSubscribe } from './useTap';

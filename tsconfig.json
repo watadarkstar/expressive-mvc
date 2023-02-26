@@ -1,18 +1,19 @@
 {
-    "compilerOptions": {
-        "outDir": "lib/",
-        "target": "ES6",
-        "sourceMap": true,
-        "moduleResolution": "node",
-        "noUnusedLocals": true,
-        "strict": true,
-        "esModuleInterop": true,
-        "types": [ "node", "jest" ],
-        "jsx": "react",
-        "lib": ["ES2018", "DOM"]
+  "compilerOptions": {
+    "baseUrl": "./",
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "paths": {
+      "@expressive/*": [
+        "packages/*/src"
+      ]
     },
-    "include": [
-        "src",
-        "tests"
-    ]
+    "sourceMap": true,
+    "strict": true,
+    "target": "es2018",
+  }
 }

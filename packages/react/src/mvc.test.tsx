@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { render, renderHook } from '../helper/testing';
-import { use } from '../instruction/use';
-import { Model } from '../model';
+import { render, renderHook } from './helper/testing';
+import { use } from './instruction/use';
+import { Model } from '@expressive/mvc';
 import { Global } from './global';
 import { MVC, Oops } from './mvc';
 import { Provider } from './provider';

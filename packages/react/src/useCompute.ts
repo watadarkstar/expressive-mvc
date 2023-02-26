@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { control } from '../control';
-import { defineProperty, uid } from '../helper/object';
+import { control } from './control';
+import { defineProperty, uid } from './helper/object';
 import { MVC } from './mvc';
 import { use } from './use';
 
-import type { Callback, NoVoid } from '../helper/types';
-import { Subscriber } from '../subscriber';
+import type { Callback, NoVoid } from './helper/types';
+import { Subscriber } from './subscriber';
 
 function useCompute <T extends {}, R extends []> (
   source: (() => T) | T,

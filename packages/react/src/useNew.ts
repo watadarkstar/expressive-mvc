@@ -1,9 +1,9 @@
+import { Model } from '@expressive/mvc';
 import React, { useState } from 'react';
 
-import { control } from '../control';
-import { getOwnPropertyNames } from '../helper/object';
-import { Model } from '../model';
-import { Subscriber } from '../subscriber';
+import { control } from './control';
+import { getOwnPropertyNames } from './helper/object';
+import { Subscriber } from './subscriber';
 import { usePeerContext } from './tap';
 
 function useNew <T extends Model> (

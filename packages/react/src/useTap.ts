@@ -1,11 +1,9 @@
+import { control, Model, Subscriber } from '@expressive/mvc';
 import React from 'react';
 
-import { control } from '../control';
-import { uid } from '../helper/object';
-import { NonOptionalValues, NoVoid, OptionalValues } from '../helper/types';
-import { Model } from '../model';
-import { Subscriber } from '../subscriber';
 import { useContext } from './context';
+import { uid } from './helper/object';
+import { NonOptionalValues, NoVoid, OptionalValues } from './helper/types';
 import { MVC } from './mvc';
 import { use } from './use';
 import { useCompute } from './useCompute';

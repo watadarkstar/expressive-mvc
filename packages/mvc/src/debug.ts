@@ -3,10 +3,10 @@ import { defineProperties } from './helper/object';
 import { Model } from './model';
 import { Subscriber, subscriber } from './subscriber';
 
-const LOCAL = "$debug local";
-const STATE = "$debug state";
-const UPDATE = "$debug update";
-const CONTROL = "$debug controller";
+const LOCAL = "$debug$ local";
+const STATE = "$debug$ state";
+const UPDATE = "$debug$ update";
+const CONTROL = "$debug$ controller";
 
 defineProperties(Model.prototype, {
   [CONTROL]: {

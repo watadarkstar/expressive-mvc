@@ -1,7 +1,7 @@
-import { issues } from '../helper/issues';
-import { add } from '../instruction/add';
-import { Model } from '../model';
+import { add, Model } from '@expressive/mvc';
+
 import { Lookup, useLookup } from './context';
+import { issues } from './helper/issues';
 import { MVC } from './mvc';
 
 export const Oops = issues({

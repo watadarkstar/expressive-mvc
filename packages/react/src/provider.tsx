@@ -1,12 +1,12 @@
+import { Model } from '@expressive/mvc';
 import React, { Suspense } from 'react';
 
-import { Parent } from '../children';
-import { control } from '../control';
-import { issues } from '../helper/issues';
-import { assignWeak, entries } from '../helper/object';
-import { Class } from '../helper/types';
-import { Model } from '../model';
+import { Parent } from './children';
 import { LookupContext, useLookup } from './context';
+import { control } from './control';
+import { issues } from './helper/issues';
+import { assignWeak, entries } from './helper/object';
+import { Class } from './helper/types';
 import { getPending } from './tap';
 
 export const Oops = issues({

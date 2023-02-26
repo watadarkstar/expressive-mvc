@@ -1,14 +1,8 @@
+import { Model } from '@expressive/mvc';
 import React from 'react';
 
-import { issues } from '../helper/issues';
-import {
-  create,
-  defineProperty,
-  getOwnPropertyDescriptor,
-  getOwnPropertySymbols,
-  getPrototypeOf,
-} from '../helper/object';
-import { Model } from '../model';
+import { issues } from './helper/issues';
+import { create, defineProperty, getOwnPropertyDescriptor, getOwnPropertySymbols, getPrototypeOf } from './helper/object';
 import { MVC } from './mvc';
 
 const Oops = issues({

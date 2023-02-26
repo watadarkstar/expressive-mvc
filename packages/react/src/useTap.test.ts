@@ -1,8 +1,8 @@
-import { mockAsync, mockSuspense, renderHook } from '../helper/testing';
-import { get } from '../instruction/get';
-import { set } from '../instruction/set';
-import { Model } from '../model';
-import { Oops as Suspense } from '../suspense';
+import { mockAsync, mockSuspense, renderHook } from './helper/testing';
+import { get } from './instruction/get';
+import { set } from './instruction/set';
+import { Model } from '@expressive/mvc';
+import { Oops as Suspense } from './suspense';
 import { useTap } from './useTap';
 
 const opts = { timeout: 100 };
